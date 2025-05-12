@@ -1,7 +1,9 @@
 package com.studylovers.br.backend.controllers;
 
+import com.studylovers.br.backend.DTOs.LoginDTO;
 import com.studylovers.br.backend.model.User;
 import com.studylovers.br.backend.repository.UserRepository;
+import com.studylovers.br.backend.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -12,11 +14,14 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
-@CrossOrigin(origins = "*") // Permite acesso do front
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UsuarioService userService;
 
     @GetMapping
     public List<User> getAllUsers() {
@@ -26,6 +31,17 @@ public class UserController {
     @PostMapping
     public User createUser(@RequestBody User user) {
         return userRepository.save(user);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginDTO credenciais) {
+        User usuario = userService.autenticar(credenciais.getEmail(), credenciais.getPassword());
+
+        if (usuario != null) {
+            return ResponseEntity.ok(usuario);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas");
+        }
     }
 
     @GetMapping("/get-user/{id}")
