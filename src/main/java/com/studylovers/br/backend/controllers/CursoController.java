@@ -14,8 +14,12 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/api/cursos")
 public class CursoController {
 
+    private final CursoService cursoService;
+
     @Autowired
-    private CursoService cursoService;
+    public CursoController(CursoService cursoService) {
+        this.cursoService = cursoService;
+    }
 
     @PostMapping
     public ResponseEntity<Curso> cadastrarCurso(
@@ -25,6 +29,7 @@ public class CursoController {
             Curso salvo = cursoService.salvarCurso(curso, imagem);
             return ResponseEntity.ok(salvo);
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.internalServerError().build();
         }
     }

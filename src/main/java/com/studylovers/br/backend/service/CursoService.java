@@ -17,16 +17,24 @@ public class CursoService {
     @Autowired
     private CursoRepository cursoRepository;
 
-    private final String uploadDir = "uploads/";
+    private String uploadDir = "";
 
     public Curso salvarCurso(Curso curso, MultipartFile imagem) throws IOException {
+
         if (imagem != null && !imagem.isEmpty()) {
+            // Garante que o diretório existe
+            File diretorio = new File(uploadDir);
+            if (!diretorio.exists()) {
+                diretorio.mkdirs();
+            }
+
             String nomeArquivo = System.currentTimeMillis() + "_" + StringUtils.cleanPath(imagem.getOriginalFilename());
-            File destino = new File(uploadDir + nomeArquivo);
+            File destino = new File(uploadDir + File.separator + nomeArquivo); // garante separador correto
             imagem.transferTo(destino);
             curso.setImagemPath(nomeArquivo);
         }
 
         return cursoRepository.save(curso);
     }
+
 }
