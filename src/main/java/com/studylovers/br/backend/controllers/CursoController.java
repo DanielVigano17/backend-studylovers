@@ -4,11 +4,10 @@ import com.studylovers.br.backend.model.Curso;
 import com.studylovers.br.backend.service.CursoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/cursos")
@@ -33,4 +32,18 @@ public class CursoController {
             return ResponseEntity.internalServerError().build();
         }
     }
+
+    @GetMapping
+    public ResponseEntity<List<Curso>> listarCursos() {
+        try {
+            List<Curso> cursos = cursoService.listarCursos();
+            return ResponseEntity.ok(cursos);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+
+
 }
