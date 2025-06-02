@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CursoService {
@@ -47,6 +48,11 @@ public class CursoService {
     public List<Curso> listarCursos() {
         return cursoRepository.findAll();
     }
+
+    public Optional<Curso> buscarPorId(Long id) {
+        return cursoRepository.findById(id);
+    }
+
 
 
 }
