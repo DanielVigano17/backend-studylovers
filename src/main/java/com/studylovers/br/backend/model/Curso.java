@@ -23,6 +23,12 @@ public class Curso {
     @Column(nullable = false)
     private String nivel;
 
+    @Column(nullable = false)
+    private String provider;
+
+    @Column(nullable = false)
+    private String url;
+
     private String imagemPath; // Caminho ou nome do arquivo salvo
 
 
@@ -50,6 +56,12 @@ public class Curso {
         return imagemPath;
     }
 
+    public String getProvider() {
+        return provider;
+    }
+
+    public String getUrl() {return url;}
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -72,6 +84,14 @@ public class Curso {
 
     public void setImagemPath(String imagemPath) {
         this.imagemPath = imagemPath;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
 
