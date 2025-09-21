@@ -29,6 +29,6 @@ public class UsuarioService {
             }
         }
 
-        return null; // credenciais inválidas
+        return null;
     }
 }
