@@ -29,9 +29,28 @@ public class Curso {
     @Column(nullable = false)
     private String url;
 
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    @ManyToOne()
+    @JoinColumn(name = "categoria_id", nullable = true)
     private Categoria categoria;
+
+    public Long getCategoria_id() {
+        return (this.categoria != null) ? this.categoria.getId() : null;
+    }
+
+    public void setCategoria_id(Long categoria_id) {
+        this.categoria_id = categoria_id;
+    }
+
+    @Transient
+    private Long categoria_id;
 
     private String imagemPath; // Caminho ou nome do arquivo salvo
 

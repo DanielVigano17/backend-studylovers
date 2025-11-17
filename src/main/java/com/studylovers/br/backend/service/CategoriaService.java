@@ -15,7 +15,6 @@ public class CategoriaService implements ICategoriaService {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
-    private ICategoriaService categoriaService;
 
     public List<Categoria> getAllCategorias() {
         return categoriaRepository.findAll();
@@ -27,6 +26,8 @@ public class CategoriaService implements ICategoriaService {
 
     @Override
     public List<Curso> getCursosByCategoria(Long categoriaId) {
-        return categoriaService.getCursosByCategoria(categoriaId);
+        return List.of();
     }
+
+
 }

@@ -13,9 +13,6 @@ public class Categoria {
 
     private String nome;
 
-    // Uma categoria pode ter vários cursos
-    @OneToMany(mappedBy = "categoria")
-    private List<Curso> cursos;
 
     public Long getId() {
         return id;
@@ -33,11 +30,4 @@ public class Categoria {
         this.nome = nome;
     }
 
-    public List<Curso> getCursos() {
-        return cursos;
-    }
-
-    public void setCursos(List<Curso> cursos) {
-        this.cursos = cursos;
-    }
 }

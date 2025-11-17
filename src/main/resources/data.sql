@@ -76,19 +76,6 @@ VALUES (
        );
 
 
-INSERT INTO cursos
-(nome, descricao, carga_horaria, nivel, provider, url, categoria_id, imagem_path)
-VALUES (
-           'Mindfulness e Redução de Estresse',
-           'Curso prático de técnicas de respiração, foco e atenção plena para reduzir estresse e melhorar seu bem-estar.',
-           12,
-           'Iniciante',
-           'Coursera',
-           'https://coursera.org/mindfulness',
-           5,
-           'mindfulness.png'
-       );
-
 
 
 
