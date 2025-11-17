@@ -29,6 +29,10 @@ public class Curso {
     @Column(nullable = false)
     private String url;
 
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
     private String imagemPath; // Caminho ou nome do arquivo salvo
 
 
@@ -93,6 +97,5 @@ public class Curso {
     public void setUrl(String url) {
         this.url = url;
     }
-
 
 }
