@@ -2,6 +2,7 @@ package com.studylovers.br.backend.service;
 
 
 import com.studylovers.br.backend.model.Curso;
+import com.studylovers.br.backend.repository.CategoriaRepository;
 import com.studylovers.br.backend.repository.CursoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,8 @@ public class CursoService {
 
     @Autowired
     private CursoRepository cursoRepository;
+    @Autowired
+    private CategoriaRepository categoriaRepository;
 
     private String uploadDir = "C:\\Users\\Daniel\\Documents\\Backend-StudyLovers\\src\\main\\resources\\static";
 
